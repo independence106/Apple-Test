@@ -15,17 +15,16 @@ import javax.swing.JPanel;
 import java.io.File;
 import javax.swing.Timer;
 
-public class GraphicsE extends Canvas implements KeyListener {
+public class GraphicsE extends JPanel implements KeyListener {
 
     TileMap tileMap = new TileMap();
     int x = 0;
     int y = 0;
 
-    public void paint(Graphics g) {
+    public void paint(Graphics g) {        
         for (;;) {
             try {
                 Thread.sleep(100);
-                g.clearRect(0, 0, 200, 200);
 
                 g.translate(x, y);
     
@@ -49,19 +48,47 @@ public class GraphicsE extends Canvas implements KeyListener {
             y = 0;
         }
         else {
+            System.out.println("doing smthing");
             x = 0;
             y = 0;
         }
+        repaint();
     }
     public void keyReleased(KeyEvent e) {
         
     }
     public static void main(String[] args) {
-        GraphicsE graphics = new GraphicsE();
-        JFrame fram = new JFrame();
-        fram.setSize(400,400);  
+        GraphicsE g = new GraphicsE();
+        JFrame f = new JFrame();
+        f.add(g);
+
         //f.setLayout(null); 
-        fram.add(graphics); 
-        fram.setVisible(true); 
+
+        
+        f.setSize(400, 400);
+        f.addKeyListener(new KeyListener() {
+            
+            public void keyPressed(KeyEvent e) {
+                System.out.println("e");
+                
+                f.repaint();
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            } 
+        });
+        f.setFocusable(true);
+        f.setVisible(true);
+
     }
 }
