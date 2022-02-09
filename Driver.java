@@ -8,7 +8,7 @@ public class Driver extends JFrame{
 	Driver(){
 		panel = new Main();
 		this.add(panel);
-		this.setTitle("Pong Game");
+		this.setTitle("Apple Test");
 		this.setResizable(true);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

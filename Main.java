@@ -11,9 +11,6 @@ public class Main extends JPanel implements Runnable{
 	static final int GAME_WIDTH = 600;
 	static final int GAME_HEIGHT = 600;
 	static final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH,GAME_HEIGHT);
-	static final int BALL_DIAMETER = 20;
-	static final int PADDLE_WIDTH = 25;
-	static final int PADDLE_HEIGHT = 100;
 	
 	Thread gameThread;
 	Image image;
@@ -54,25 +51,10 @@ public class Main extends JPanel implements Runnable{
 		g.drawRect(790, 400, 20, 20);
 		g.setColor(Color.LIGHT_GRAY);
 		g.fillOval(playerX, playerY, 20, 20);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	
 		System.out.println("translate" + x);
 		System.out.println(playerX);
 		Toolkit.getDefaultToolkit().sync(); 
-
-
-		
 	}
 	
 	public void draw(Graphics g) {
@@ -80,21 +62,16 @@ public class Main extends JPanel implements Runnable{
 
 	}
 	public void move(int dir) {
+		playerX -= dir;
+
 		if (playerX <= 300 || playerX >= 500) {
 			translate = false;
 		} else {
 			translate = true;
 		}
 		if (translate) {
-			if (playerX == 300 || playerX == 500) {
-				
-			} else {
-				x += dir;
-			}
-			
+			x += dir;
 			playerX = -x + 300;
-		} else {
-			playerX -= dir;
 		}
 		
 		
