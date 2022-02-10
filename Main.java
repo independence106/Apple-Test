@@ -125,7 +125,7 @@ public class Main extends JPanel implements Runnable{
 			lastTime = now;
 			if(delta >=1) {
 				if (movingX) {
-					moveX(-5);
+					moveX(-4);
 				}
 				if (movingY) {
 					moveY(2);
@@ -151,7 +151,18 @@ public class Main extends JPanel implements Runnable{
 			}
 		}
 		public void keyReleased(KeyEvent e) {
-			
+			if (e.getKeyCode()==KeyEvent.VK_W) {
+				movingX = false;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_S) {
+				movingY = false;
+			}
+			if(e.getKeyCode()==KeyEvent.VK_A) {
+				moveX(2);
+			}
+			if(e.getKeyCode()==KeyEvent.VK_D) {
+				moveX(-2);
+			}
 		}
 	}
 }
