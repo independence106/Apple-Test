@@ -28,6 +28,8 @@ public class Main extends JPanel implements Runnable{
 	int playerY = 300;
 	int imag2x;
 	int imag2y;
+	boolean movingX = false;
+	boolean movingY = false;
 	boolean translateX = true;
 	boolean translateY = true;
 	
@@ -64,13 +66,13 @@ public class Main extends JPanel implements Runnable{
 		g.translate(x, y);
 		//shoudl start 1 TILE BACK!!!
 		g.clearRect(-1000, -1000, 10000, 10000);
-		for (int i = 10; i < 400 / 20; i++) {
-			g.setColor(Color.PINK);
-			for (int e = 0; e < 800 / 20; e++) {
-				g.drawRect(e*20, i*20, 20, 20);
-				g.fillRect(e*20, i*20, 20, 20);
-			}
-		}
+		// for (int i = 10; i < 400 / 20; i++) {
+		// 	g.setColor(Color.PINK);
+		// 	for (int e = 0; e < 800 / 20; e++) {
+		// 		g.drawRect(e*20, i*20, 20, 20);
+		// 		g.fillRect(e*20, i*20, 20, 20);
+		// 	}
+		// }
 		g.drawImage(imag2, 0, 0, this);																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			
 		g.setColor(Color.LIGHT_GRAY);
 		g.drawRect(300, 400, 20, 20);
@@ -95,7 +97,6 @@ public class Main extends JPanel implements Runnable{
 			x += dir;
 			playerX = -x + 300;
 		}
-		repaint();
 	}
 	public void moveY(int dir) {
 		playerY -= dir;
@@ -123,6 +124,12 @@ public class Main extends JPanel implements Runnable{
 			delta += (now -lastTime)/ns;
 			lastTime = now;
 			if(delta >=1) {
+				if (movingX) {
+					moveX(-5);
+				}
+				if (movingY) {
+					moveY(2);
+				}
 				repaint();
 				delta--;
 			}
@@ -131,10 +138,10 @@ public class Main extends JPanel implements Runnable{
 	public class AL extends KeyAdapter{
 		public void keyPressed(KeyEvent e) {
 			if(e.getKeyCode()==KeyEvent.VK_W) {
-				moveY(-2);
+				movingX = true;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_S) {
-				moveY(2);
+				movingY = true;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_A) {
 				moveX(2);
