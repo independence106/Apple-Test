@@ -57,7 +57,7 @@ public class Main extends JPanel implements Runnable{
 	
 	public void paint(Graphics g) {
 		Toolkit.getDefaultToolkit().sync(); 
-
+		
 		draw(g);
 	}
 	
@@ -158,7 +158,7 @@ public class Main extends JPanel implements Runnable{
 				movingY = false;
 			}
 			if(e.getKeyCode()==KeyEvent.VK_A) {
-				moveX(2);
+				moveX(10);
 			}
 			if(e.getKeyCode()==KeyEvent.VK_D) {
 				moveX(-2);
