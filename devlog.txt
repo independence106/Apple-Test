@@ -1,3 +1,7 @@
 2-8-2022
 
 -Started worked on mainframe + basic moving framework as well as planning out ideas
+
+2-9-2022 
+
+-Ok i figured out movement smoothing, moving when i press a button is too inefficient, need to implement the keyReleased and whatnot!
