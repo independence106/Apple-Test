@@ -22,7 +22,8 @@ public class MapDrawer {
 	}
 
     public void draw(Graphics g, ImageObserver o) {
-        g.drawImage(imag2, 0, 0, o);	
+        g.drawImage(imag2, 0, 0, o);
+		g.drawImage(imag2, imag2x,0,o);	
     }
 
 }

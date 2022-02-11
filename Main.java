@@ -90,12 +90,11 @@ public class Main extends JPanel implements Runnable{
 			lastTime = now;
 			if(delta >=1) {
 				
-				System.out.println(player.playerX);
 				if (player.movingX == 1) {
 					if (player.playerX + 23 >= 400 && player.playerX + 22 <= 420 && (player.playerY <= 420 && player.playerY >= 380)){
 						System.out.println("collision");
 					} else {
-						player.moveX(-4, map.imag2x);
+						player.moveX(-4, 2 * map.imag2x);
 
 					}
 				}
@@ -103,7 +102,7 @@ public class Main extends JPanel implements Runnable{
 					if (player.playerX - 20 == 400 && (player.playerY <= 420 && player.playerY >= 380)){
 						System.out.println("collision");
 					} else {
-						player.moveX(4, map.imag2x);
+						player.moveX(4, 2* map.imag2x);
 
 					}
 				}
