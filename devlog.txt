@@ -10,3 +10,8 @@
 
 -Moving drawings into their respective classes (Menu, Game, Battle, Cutscences, ect, ect) with subdrawers underneath
 -Research collisions vs tilemapping
+
+2-11-2022
+
+-Decided to use Tiled for mapdrawing
+-Worked on collisions and will be using the collision tilemap for collisions
