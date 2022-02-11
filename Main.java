@@ -20,7 +20,8 @@ public class Main extends JPanel implements Runnable{
 	Thread gameThread;
 	Image image;
 	Graphics graphics;
-	BufferedImage imag2;
+	MapDrawer map = new MapDrawer();
+	Player player = new Player();
 	Random random;
 	int x = 0;
 	int y = 0;
@@ -38,21 +39,14 @@ public class Main extends JPanel implements Runnable{
 		this.setFocusable(true);
 		this.addKeyListener(new AL());
 		this.setPreferredSize(SCREEN_SIZE);
-		loadImg();
+		map.loadImg();
+		imag2x = map.imag2x;
+		imag2y = map.imag2y;
 		gameThread = new Thread(this);
 		gameThread.start();
 	}
 
-	public void loadImg() {
-		try {
-			imag2 = ImageIO.read(new File("map.jpg"));
-
-		} catch (Exception e) {
-			//TODO: handle exception
-		}
-		imag2x = imag2.getWidth();
-		imag2y = imag2.getHeight();
-	}
+	
 	
 	
 	public void paint(Graphics g) {
@@ -63,7 +57,7 @@ public class Main extends JPanel implements Runnable{
 	
 	public void draw(Graphics g) {
 		
-		g.translate(x, y);
+		g.translate(player.translationX, player.translationY);
 		//shoudl start 1 TILE BACK!!!
 		g.clearRect(-1000, -1000, 10000, 10000);
 		// for (int i = 10; i < 400 / 20; i++) {
@@ -73,44 +67,15 @@ public class Main extends JPanel implements Runnable{
 		// 		g.fillRect(e*20, i*20, 20, 20);
 		// 	}
 		// }
-		g.drawImage(imag2, 0, 0, this);																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			
-		g.setColor(Color.LIGHT_GRAY);
-		g.drawRect(300, 400, 20, 20);
-		g.drawRect(350, 400, 20, 20);
-		g.drawRect(0, 400, 20, 20);
-		g.drawRect(790, 400, 20, 20);
-		g.setColor(Color.LIGHT_GRAY);
-		g.fillOval(playerX, playerY, 20, 20);
+		
+		map.draw(g, this);
+		g.setColor(Color.BLACK);
+		g.fillRect(400, 400, 20, 20);
+		player.draw(g);
+		
 		Toolkit.getDefaultToolkit().sync(); 
 
 
-	}
-	public void moveX(int dir) {
-		playerX -= dir;
-
-		if (playerX <= 300 || playerX >= imag2x- 300) {
-			translateX = false;
-		} else {
-			translateX = true;
-		}
-		if (translateX) {
-			x += dir;
-			playerX = -x + 300;
-		}
-	}
-	public void moveY(int dir) {
-		playerY -= dir;
-
-		if (playerY <= 300 || playerY >= imag2y - 300) {
-			translateY = false;
-		} else {
-			translateY = true;
-		}
-		if (translateY) {
-			y += dir;
-			playerY = -y + 300;
-		}
-		repaint();
 	}
 	
 	public void run() {
@@ -124,45 +89,42 @@ public class Main extends JPanel implements Runnable{
 			delta += (now -lastTime)/ns;
 			lastTime = now;
 			if(delta >=1) {
-				if (movingX) {
-					moveX(-4);
+				
+				System.out.println(player.playerX);
+				if (player.movingX == 1) {
+					if (player.playerX + 20 == 400){
+						System.out.println("collision");
+					} else {
+						player.moveX(-4, map.imag2x);
+
+					}
 				}
-				if (movingY) {
-					moveY(2);
+				if (player.movingX == -1) {
+					if (player.playerX + 20 == 400){
+						System.out.println("collision");
+					} else {
+						player.moveX(4, map.imag2x);
+
+					}
+				}
+				if (player.movingY == 1) {
+					player.moveY(4, map.imag2y);
+				}
+				if (player.movingY == -1) {
+					player.moveY(-4, map.imag2y);
 				}
 				repaint();
 				delta--;
 			}
+			
 		}
 	}
 	public class AL extends KeyAdapter{
 		public void keyPressed(KeyEvent e) {
-			if(e.getKeyCode()==KeyEvent.VK_W) {
-				movingX = true;
-			}
-			if(e.getKeyCode()==KeyEvent.VK_S) {
-				movingY = true;
-			}
-			if(e.getKeyCode()==KeyEvent.VK_A) {
-				moveX(2);
-			}
-			if(e.getKeyCode()==KeyEvent.VK_D) {
-				moveX(-2);
-			}
+			player.keyPressed(e);
 		}
 		public void keyReleased(KeyEvent e) {
-			if (e.getKeyCode()==KeyEvent.VK_W) {
-				movingX = false;
-			}
-			if(e.getKeyCode()==KeyEvent.VK_S) {
-				movingY = false;
-			}
-			if(e.getKeyCode()==KeyEvent.VK_A) {
-				moveX(10);
-			}
-			if(e.getKeyCode()==KeyEvent.VK_D) {
-				moveX(-2);
-			}
+			player.keyReleased(e);
 		}
 	}
 }
