@@ -92,7 +92,7 @@ public class Main extends JPanel implements Runnable{
 				
 				System.out.println(player.playerX);
 				if (player.movingX == 1) {
-					if (player.playerX + 20 == 400){
+					if (player.playerX + 23 >= 400 && player.playerX + 22 <= 420 && (player.playerY <= 420 && player.playerY >= 380)){
 						System.out.println("collision");
 					} else {
 						player.moveX(-4, map.imag2x);
@@ -100,19 +100,31 @@ public class Main extends JPanel implements Runnable{
 					}
 				}
 				if (player.movingX == -1) {
-					if (player.playerX + 20 == 400){
+					if (player.playerX - 20 == 400 && (player.playerY <= 420 && player.playerY >= 380)){
 						System.out.println("collision");
 					} else {
 						player.moveX(4, map.imag2x);
 
 					}
 				}
+				
 				if (player.movingY == 1) {
-					player.moveY(4, map.imag2y);
+					if (player.playerY - 20 == 400 && (player.playerX <= 420 && player.playerX >= 380)){
+						System.out.println("collision");
+					} else {
+						player.moveY(4, map.imag2y);
+
+					}
 				}
+				
 				if (player.movingY == -1) {
-					player.moveY(-4, map.imag2y);
-				}
+					if (player.playerY + 20 == 400 && (player.playerX <= 420 && player.playerX >= 380)){
+						System.out.println("collision");
+					} else {
+						player.moveY(-4, map.imag2y);
+
+					}
+				}				
 				repaint();
 				delta--;
 			}

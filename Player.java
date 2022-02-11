@@ -48,7 +48,7 @@ public class Player {
 
     public void draw(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
-	    g.fillOval(playerX, playerY, 20, 20);
+	    g.fillRect(playerX, playerY, 20, 20);
     }
 
     public void keyPressed(KeyEvent e) {
