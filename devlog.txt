@@ -15,3 +15,5 @@
 
 -Decided to use Tiled for mapdrawing
 -Worked on collisions and will be using the collision tilemap for collisions
+-https://www.cell2d.org/
+-Stuck with import XML files without using other editors...
