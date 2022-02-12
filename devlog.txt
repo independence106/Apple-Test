@@ -17,3 +17,4 @@
 -Worked on collisions and will be using the collision tilemap for collisions
 -https://www.cell2d.org/
 -Stuck with import XML files without using other editors...
+-2-3 days to figure this out before I do it manually
