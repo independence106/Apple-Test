@@ -19,3 +19,12 @@
 -and TiledReader
 -Stuck with import XML files without using other editors...
 -2-3 days to figure this out before I do it manually
+
+2-12-2022
+
+-Nothing
+
+2-13-2022
+
+-planning on using TiledReader for java, since I don't have to get extensions and should be multiplatfomr
+-contacting devs
