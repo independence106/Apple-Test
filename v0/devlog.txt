@@ -1,0 +1,21 @@
+2-8-2022
+
+-Started worked on mainframe + basic moving framework as well as planning out ideas
+
+2-9-2022 
+
+-Ok i figured out movement smoothing, moving when i press a button is too inefficient, need to implement the keyReleased and whatnot!
+
+2-10-2022
+
+-Moving drawings into their respective classes (Menu, Game, Battle, Cutscences, ect, ect) with subdrawers underneath
+-Research collisions vs tilemapping
+
+2-11-2022
+
+-Decided to use Tiled for mapdrawing
+-Worked on collisions and will be using the collision tilemap for collisions
+-https://www.cell2d.org/
+-and TiledReader
+-Stuck with import XML files without using other editors...
+-2-3 days to figure this out before I do it manually
