@@ -28,3 +28,8 @@
 
 -planning on using TiledReader for java, since I don't have to get extensions and should be multiplatfomr
 -contacting devs
+
+2-14-2022
+
+T-t
+https://github.com/ZeroDoctor/yt-java-game/blob/master/game-decay/src/main/java/com/zerulus/game/tiles/TileManager.java

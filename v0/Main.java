@@ -6,16 +6,26 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
+
+import org.tiledreader.*;
 
 public class Main extends JPanel implements Runnable{
 
 	static final int GAME_WIDTH = 600;
 	static final int GAME_HEIGHT = 600;
 	static final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH,GAME_HEIGHT);
+
+	FileSystemTiledReader n = new FileSystemTiledReader();
+	TiledMap m = n.getMap("testFUll.tmx");
+	List<TiledTileset> e = m.getTilesets();
+	TiledTileset o = e.get(0);
+	Collection<TiledTile> pp = o.getTiles();
+
 	
 	Thread gameThread;
 	Image image;
@@ -44,6 +54,7 @@ public class Main extends JPanel implements Runnable{
 		imag2y = map.imag2y;
 		gameThread = new Thread(this);
 		gameThread.start();
+		
 	}
 
 	
@@ -56,6 +67,10 @@ public class Main extends JPanel implements Runnable{
 	}
 	
 	public void draw(Graphics g) {
+		for (TiledTile tile : pp) {
+			g.drawImage((Image) tile.getImage(), x, y, this);
+		}
+		
 		
 		g.translate(player.translationX, player.translationY);
 		//shoudl start 1 TILE BACK!!!
