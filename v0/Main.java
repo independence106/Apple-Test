@@ -23,11 +23,11 @@ public class Main extends JPanel implements Runnable{
 	static final int GAME_HEIGHT = 600;
 	static final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH,GAME_HEIGHT);
 
-	FileSystemTiledReader n = new FileSystemTiledReader();
-	TiledMap m = n.getMap("testFUll.tmx");
-	List<TiledTileset> e = m.getTilesets();
-	TiledTileset o = e.get(0);
-	Collection<TiledTile> pp = o.getTiles();
+	// FileSystemTiledReader n = new FileSystemTiledReader();
+	// TiledMap m = n.getMap("testFUll.tmx");
+	// List<TiledTileset> e = m.getTilesets();
+	// TiledTileset o = e.get(0);
+	// Collection<TiledTile> pp = o.getTiles();
 
 	final TMXMapReader reader = new TMXMapReader();
 	final InputStream stream;
