@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\path\\to\\jarfile\\commons-logging-1.1.1.jar"
+        "c:\\path\\to\\jarfile\\commons-logging-1.1.1.jar",
+        "c:\\Users\\zhouy\\Downloads\\libtiled-1.4.2 (1).jar"
+
     ]
 }

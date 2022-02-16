@@ -12,10 +12,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import org.tiledreader.*;
+import org.mapeditor.core.Map;
+import org.mapeditor.io.MapReader;
+import org.mapeditor.io.TMXMapReader;
 
-import tiled.core.Map;
-import tiled.io.TMXMapReader;
 
 public class Main extends JPanel implements Runnable{
 
@@ -29,8 +29,8 @@ public class Main extends JPanel implements Runnable{
 	// TiledTileset o = e.get(0);
 	// Collection<TiledTile> pp = o.getTiles();
 
-	final TMXMapReader reader = new TMXMapReader();
-	final InputStream stream;
+	MapReader reader;
+	// final InputStream stream;
 	Map mapREAL;
 	
 	
@@ -61,17 +61,21 @@ public class Main extends JPanel implements Runnable{
 		imag2y = map.imag2y;
 		gameThread = new Thread(this);
 		gameThread.start();
-		stream = reader.getClass().getClassLoader().getResourceAsStream("tilemaps/testFULL.tmx");
 		
 	}
 
 	public void loadMap() {
 		try {
-			mapREAL = reader.readMap(stream);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+		try {
+			reader = new MapReader();
+			reader.readMap("testFULL.tmx");
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
 	}
 	
 	
