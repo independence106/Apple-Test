@@ -13,6 +13,9 @@ import javax.swing.*;
 import javax.swing.Timer;
 
 import org.mapeditor.core.Map;
+import org.mapeditor.core.MapLayer;
+import org.mapeditor.core.Tile;
+import org.mapeditor.core.TileLayer;
 import org.mapeditor.io.MapReader;
 import org.mapeditor.io.TMXMapReader;
 
@@ -32,6 +35,7 @@ public class Main extends JPanel implements Runnable{
 	MapReader reader;
 	// final InputStream stream;
 	Map mapREAL;
+	TileLayer m;
 	
 	
 	Thread gameThread;
@@ -72,17 +76,18 @@ public class Main extends JPanel implements Runnable{
 		}
 		try {
 			reader = new MapReader();
-			reader.readMap("testFULL.tmx");
+			mapREAL = reader.readMap("testFULL.tmx");
 		} catch (Exception e) {
 			//TODO: handle exception
 		}
+		m = new TileLayer(mapREAL);
 	}
 	
 	
 	public void paint(Graphics g) {
 		Toolkit.getDefaultToolkit().sync(); 
-		
-		draw(g);
+		g.drawImage(m.getTileAt(0, 0).getImage(), 0, 0, this);
+		// draw(g);
 	}
 	
 	public void draw(Graphics g) {
@@ -169,6 +174,9 @@ public class Main extends JPanel implements Runnable{
 		public void keyReleased(KeyEvent e) {
 			player.keyReleased(e);
 		}
+	}
+	public static void main(String[] args) {
+		
 	}
 }
 //*********************************
