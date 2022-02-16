@@ -14,6 +14,9 @@ import javax.swing.Timer;
 
 import org.tiledreader.*;
 
+import tiled.core.Map;
+import tiled.io.TMXMapReader;
+
 public class Main extends JPanel implements Runnable{
 
 	static final int GAME_WIDTH = 600;
@@ -26,6 +29,10 @@ public class Main extends JPanel implements Runnable{
 	TiledTileset o = e.get(0);
 	Collection<TiledTile> pp = o.getTiles();
 
+	final TMXMapReader reader = new TMXMapReader();
+	final InputStream stream;
+	Map mapREAL;
+	
 	
 	Thread gameThread;
 	Image image;
@@ -54,10 +61,18 @@ public class Main extends JPanel implements Runnable{
 		imag2y = map.imag2y;
 		gameThread = new Thread(this);
 		gameThread.start();
+		stream = reader.getClass().getClassLoader().getResourceAsStream("tilemaps/testFULL.tmx");
 		
 	}
 
+	public void loadMap() {
+		try {
+			mapREAL = reader.readMap(stream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	
+	}
 	
 	
 	public void paint(Graphics g) {
@@ -67,9 +82,7 @@ public class Main extends JPanel implements Runnable{
 	}
 	
 	public void draw(Graphics g) {
-		for (TiledTile tile : pp) {
-			g.drawImage((Image) tile.getImage(), x, y, this);
-		}
+		
 		
 		
 		g.translate(player.translationX, player.translationY);

@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\zhouy\\Downloads\\TiledReader-1.1.0\\TiledReader-1.1.0\\TiledReader.jar"
+        "c:\\Users\\zhouy\\Downloads\\TiledReader-1.1.0\\TiledReader-1.1.0\\TiledReader.jar",
+        "c:\\Users\\zhouy\\Downloads\\libtiled-0.17.jar"
     ]
 }
