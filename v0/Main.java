@@ -76,9 +76,10 @@ public class Main extends JPanel implements Runnable{
 		}
 		try {
 			reader = new MapReader();
-			mapREAL = reader.readMap("testFULL.tmx");
+			mapREAL = reader.readMap("tilemaps/testFULL.tmx");
 		} catch (Exception e) {
 			//TODO: handle exception
+			
 		}
 		m = new TileLayer(mapREAL);
 	}
