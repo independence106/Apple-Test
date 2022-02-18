@@ -14,6 +14,7 @@ import javax.swing.Timer;
 
 import org.mapeditor.core.Map;
 import org.mapeditor.core.MapLayer;
+import org.mapeditor.core.ObjectGroup;
 import org.mapeditor.core.Tile;
 import org.mapeditor.core.TileLayer;
 import org.mapeditor.io.MapReader;
@@ -36,7 +37,6 @@ public class Main extends JPanel implements Runnable{
 	MapReader reader = new MapReader();
 	// final InputStream stream;
 	Map mapREAL;
-	TileLayer m;
 
 	OrthogonalRenderer renderer;
 	
@@ -74,14 +74,14 @@ public class Main extends JPanel implements Runnable{
 
 	public void loadMap() {
 		try {
-			
-			mapREAL = reader.readMap("v0/testFULL.tmx");
+			System.out.println("doing this");
+			mapREAL = reader.readMap("tilemaps\testFULL.tmx");
+			System.out.println(mapREAL.getFilename());
 		} catch (Exception e) {
 			//TODO: handle exception
 			
 		}
 		
-		m = new TileLayer(mapREAL);
 		// mapREAL.setLayer(0, m);
 	
 		renderer = new OrthogonalRenderer(mapREAL);
@@ -89,9 +89,16 @@ public class Main extends JPanel implements Runnable{
 	
 	
 	public void paint(Graphics g) {
+
 		Toolkit.getDefaultToolkit().sync(); 
 		// draw(g);
-		renderer.paintTileLayer((Graphics2D) g, m);
+		for (MapLayer layer : mapREAL.getLayers()) {
+            if (layer instanceof TileLayer) {
+                renderer.paintTileLayer((Graphics2D) g, (TileLayer) layer);
+            } else if (layer instanceof ObjectGroup) {
+                renderer.paintObjectGroup((Graphics2D) g, (ObjectGroup) layer);
+            }
+        }
 	}
 	
 	public void draw(Graphics g) {
