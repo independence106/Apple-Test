@@ -44,6 +44,7 @@ import org.mapeditor.core.Map;
 import org.mapeditor.core.ObjectGroup;
 import org.mapeditor.core.MapLayer;
 import org.mapeditor.core.TileLayer;
+import org.mapeditor.io.MapReader;
 import org.mapeditor.io.TMXMapReader;
 import org.mapeditor.view.HexagonalRenderer;
 import org.mapeditor.view.MapRenderer;
@@ -56,7 +57,7 @@ import org.mapeditor.view.IsometricRenderer;
 public class TMXViewer
 {
     public static void main(String[] arguments) {
-        String fileToOpen = "tilemaps/testFULL.tmx";
+        String fileToOpen = "testFULL.tmx";
 
         for (String arg : arguments) {
             if ("-?".equals(arg) || "-help".equals(arg)) {
@@ -78,7 +79,7 @@ public class TMXViewer
 
         Map map;
         try {
-            TMXMapReader mapReader = new TMXMapReader();
+            MapReader mapReader = new MapReader();
             map = mapReader.readMap(fileToOpen);
         } catch (Exception e) {
             System.out.println("Error while reading the map:\n" + e.getMessage());
