@@ -170,6 +170,9 @@ public class Main extends JPanel implements Runnable{
 			player.keyReleased(e);
 		}
 	}
+	public static void main(String[] args) {
+		
+	}
 }
 //*********************************
 
