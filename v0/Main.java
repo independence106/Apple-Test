@@ -18,6 +18,7 @@ import org.mapeditor.core.Tile;
 import org.mapeditor.core.TileLayer;
 import org.mapeditor.io.MapReader;
 import org.mapeditor.io.TMXMapReader;
+import org.mapeditor.view.OrthogonalRenderer;
 
 
 public class Main extends JPanel implements Runnable{
@@ -32,10 +33,12 @@ public class Main extends JPanel implements Runnable{
 	// TiledTileset o = e.get(0);
 	// Collection<TiledTile> pp = o.getTiles();
 
-	MapReader reader;
+	MapReader reader = new MapReader();
 	// final InputStream stream;
 	Map mapREAL;
 	TileLayer m;
+
+	OrthogonalRenderer renderer;
 	
 	
 	Thread gameThread;
@@ -60,9 +63,10 @@ public class Main extends JPanel implements Runnable{
 		this.setFocusable(true);
 		this.addKeyListener(new AL());
 		this.setPreferredSize(SCREEN_SIZE);
-		map.loadImg();
+		// map.loadImg();
 		imag2x = map.imag2x;
 		imag2y = map.imag2y;
+		loadMap();
 		gameThread = new Thread(this);
 		gameThread.start();
 		
@@ -71,24 +75,23 @@ public class Main extends JPanel implements Runnable{
 	public void loadMap() {
 		try {
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			reader = new MapReader();
-			mapREAL = reader.readMap("tilemaps/testFULL.tmx");
+			mapREAL = reader.readMap("v0/testFULL.tmx");
 		} catch (Exception e) {
 			//TODO: handle exception
 			
 		}
+		
 		m = new TileLayer(mapREAL);
+		// mapREAL.setLayer(0, m);
+	
+		renderer = new OrthogonalRenderer(mapREAL);
 	}
 	
 	
 	public void paint(Graphics g) {
 		Toolkit.getDefaultToolkit().sync(); 
-		g.drawImage(m.getTileAt(0, 0).getImage(), 0, 0, this);
 		// draw(g);
+		renderer.paintTileLayer((Graphics2D) g, m);
 	}
 	
 	public void draw(Graphics g) {
