@@ -33,3 +33,8 @@
 
 T-t
 https://github.com/ZeroDoctor/yt-java-game/blob/master/game-decay/src/main/java/com/zerulus/game/tiles/TileManager.java
+
+2-16-2022
+
+javac Main.java -cp ".;libtiled-1.4.2.jar"
+but : for linux

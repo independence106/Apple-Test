@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\694\\Downloads\\libtiled-1.4.2.jar",
+        "libtiled-1.4.2.jar"
+    ],
+    "java.project.sourcePaths": [
+        "."
+    ]
+}
