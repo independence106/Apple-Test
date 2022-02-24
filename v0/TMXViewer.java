@@ -57,7 +57,7 @@ import org.mapeditor.view.IsometricRenderer;
 public class TMXViewer
 {
     public static void main(String[] arguments) {
-        String fileToOpen = "testFULL.tmx";
+        String fileToOpen = "v0/testFULL.tmx";
 
         for (String arg : arguments) {
             if ("-?".equals(arg) || "-help".equals(arg)) {
